@@ -1,0 +1,44 @@
+<h3>Share your Feed with Friends!</h3><hr><br />
+	<div class=' container col-lg-12'>
+		<div class='col-lg-8'>
+		<form>
+			<div class="input-group">
+  					<input type="text" class="form-control" style="border-radius: 3px" id='rssFeed' ng-model='rssFeed' type="text" placeholder="Type the URL of your favorite RSS feeds here">
+  					<span class="input-group-addon btn btn-success" id='update' type="submit" class="btn btn-success" ng-click="updateModel()">Get 'Em</span>
+				</div>
+		</form>
+		<div ng-show='existingArticles()' class="well">
+		<div class='margin-bottom'>
+			<button class="btn btn-danger" ng-click="markAll()">Mark all as <span ng-show='allAreRead()'>un</span>read</button>
+			<button class="btn btn-danger" ng-click="clearCompleted()">Clear Read</button>
+		
+		</div>
+		<div ng-hide='article.cleared' class='read-{{article.read}}' ng-repeat="article in articles">
+            <a href='{{article.link}}'class='title'>{{article.title}}</a>
+			<span target='_blank'>{{article.shortLink}}</span>
+			<button ng-click="markAsRead(article)" class='btn btn-primary btn-sm markRead'>Mark as <span ng-show='article.read'>un</span>read</button>
+		</div>	
+	</div>
+		</div>
+			<div class="col-lg-4">
+			<table class="table table-striped table-hover ">
+  <thead>
+    <tr class="success">
+    <th>my top 5</th>
+     </tr>
+     <tr class="info">
+    	<td>{{rssFeed}} <span ng-hide="!rssFeed"><button class="btn btn-success btn-xs" ng-click="addMyFavs()" type="checkbox"/>add feed</button></span></td>
+     </tr>
+  </thead>
+  <tbody>
+  	<tr ng-repeat="mine in myFavs"><td ng-model="rssFeed">{{mine.myList}}</td></tr>
+  	
+  </tbody>
+</table>
+		</div>
+	</div>
+
+	
+
+	
+	
